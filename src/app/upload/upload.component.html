@@ -2,4 +2,8 @@
   <div>Please upload the Excel document in required format</div>
   <p-fileUpload #fileUploader accept=".xls,.xlsx" mode="basic" name="myfile[]" [chooseLabel]="file?.name || 'Browse'" [auto]="true" (onSelect)="uploadFile($event, fileUploader)"></p-fileUpload>
   <div><strong>Allowed Formats:</strong> xls or xlsx</div>
+
+<!--  <div>Fetch file from Sharepoint</div>-->
+<!--  <button pButton pRipple type="button" label="Load File" class="p-button-raised p-button-info" (click)="loadFile()"></button>-->
+
 </div>

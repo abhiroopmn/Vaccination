@@ -10,7 +10,7 @@ import {SharedService} from "../shared/shared.service";
 export class PrintComponent {
   details: any[] = [];
   headers: string[] = [];
-  headersToBeExcluded = ['Empl ID', 'Empl EMAIL'];
+  headersToBeExcluded = ['Empl ID', 'Email ID', 'Employee Name'];
 
   constructor(private sharedService: SharedService) {
     this.sharedService.details.subscribe(details => this.details = details);

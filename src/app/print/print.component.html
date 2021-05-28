@@ -1,6 +1,7 @@
 <div class="employee-details" *ngIf="details?.length !== 0">
   <div>Employee ID: </div><div>{{details[0] ? details[0]['Empl ID'] : ''}}</div>
-  <div>Email: </div><div>{{details[0] ? details[0]['Empl EMAIL'] : ''}}</div>
+  <div>Email: </div><div>{{details[0] ? details[0]['Email ID'] : ''}}</div>
+  <div>Employee Name: </div><div>{{details[0] ? details[0]['Employee Name'] : ''}}</div>
 </div>
 
 <p-table [value]="details" *ngIf="details?.length !== 0">

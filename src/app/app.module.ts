@@ -17,7 +17,7 @@ import {RippleModule} from "primeng/ripple";
 import {TableModule} from "primeng/table";
 import {PrintComponent} from "./print/print.component";
 import {NgxPrintModule} from "ngx-print";
-import {DatePipe} from "@angular/common";
+import {DatePipe, DecimalPipe} from "@angular/common";
 import {FormatPipe} from "./print/format.pipe";
 import {CardModule} from "primeng/card";
 
@@ -44,7 +44,7 @@ import {CardModule} from "primeng/card";
     NgxPrintModule,
     CardModule
   ],
-  providers: [SharedService, DatePipe],
+  providers: [SharedService, DatePipe, DecimalPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
