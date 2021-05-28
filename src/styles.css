@@ -1,1 +1,46 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'QualcommNext';
+  font-style: normal;
+  src: url('assets/fonts/QualcommNext-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  src: url('assets/fonts/roboto.regular.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+
+/*vaccine-upload th {*/
+/*  background-color: red;*/
+/*  color: green;*/
+/*}*/
+
+/*vaccine-print {*/
+/*  display: none;*/
+/*}*/
+
+/*@media print {*/
+/*  vaccine-upload {*/
+/*    display: block;*/
+/*  }*/
+
+/*  document-search {*/
+/*    display: none;*/
+/*  }*/
+/*}*/
+
+/*@media print {*/
+/*  @page { margin: 0; }*/
+/*  body { margin: 1.6cm; }*/
+/*}*/
+
+/*th {*/
+/*  color: red;*/
+/*}*/

@@ -1,0 +1,12 @@
+<p-table [value]="details" *ngIf="details?.length !== 0">
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let header of headers">{{header}}</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-detail>
+    <tr>
+      <td *ngFor="let header of headers">{{detail[header]}}</td>
+    </tr>
+  </ng-template>
+</p-table>

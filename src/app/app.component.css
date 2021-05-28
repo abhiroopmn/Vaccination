@@ -1,0 +1,22 @@
+.header {
+  background-color: #3253DC;
+  color: #FFFFFF;
+  font-family: 'QualcommNext', sans-serif;
+  font-size: 40px;
+  padding: 10px 50px 15px 50px;
+}
+
+
+.bold {
+  font-weight: 700;
+}
+
+/*@media print {*/
+/*  .header {*/
+/*    display: none;*/
+/*  }*/
+
+/*  :host p-tabMenu {*/
+/*    display: none;*/
+/*  }*/
+/*}*/

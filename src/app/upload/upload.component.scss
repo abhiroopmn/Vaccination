@@ -1,0 +1,11 @@
+.upload-container {
+  margin: 30px 40px;
+
+  & > div:first-child {
+    margin: 10px 0;
+  }
+
+  & > div:last-child {
+    margin: 10px 0;
+  }
+}
