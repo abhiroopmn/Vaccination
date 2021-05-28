@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  src: url('fonts/roboto.regular.ttf') format('truetype');
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif !important;
+}
+
+th {
+  background-color: red;
+  color: green;
+}
+
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  body {
+    margin: 1.6cm;
+  }
+}
