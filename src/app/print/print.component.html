@@ -1,12 +1,21 @@
+<div class="employee-details" *ngIf="details?.length !== 0">
+  <div>Employee ID: </div><div>{{details[0] ? details[0]['Empl ID'] : ''}}</div>
+  <div>Email: </div><div>{{details[0] ? details[0]['Empl EMAIL'] : ''}}</div>
+</div>
+
 <p-table [value]="details" *ngIf="details?.length !== 0">
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let header of headers">{{header}}</th>
+      <ng-container *ngFor="let header of headers">
+        <th *ngIf="!headersToBeExcluded.includes(header)">{{header}}</th>
+      </ng-container>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-detail>
     <tr>
-      <td *ngFor="let header of headers">{{detail[header]}}</td>
+      <ng-container *ngFor="let header of headers">
+        <td *ngIf="!headersToBeExcluded.includes(header)">{{detail[header] | format: header}}</td>
+      </ng-container>
     </tr>
   </ng-template>
 </p-table>

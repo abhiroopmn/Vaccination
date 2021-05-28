@@ -17,13 +17,17 @@ import {RippleModule} from "primeng/ripple";
 import {TableModule} from "primeng/table";
 import {PrintComponent} from "./print/print.component";
 import {NgxPrintModule} from "ngx-print";
+import {DatePipe} from "@angular/common";
+import {FormatPipe} from "./print/format.pipe";
+import {CardModule} from "primeng/card";
 
 @NgModule({
   declarations: [
     AppComponent,
     UploadComponent,
     DocumentSearchComponent,
-    PrintComponent
+    PrintComponent,
+    FormatPipe
   ],
   imports: [
     BrowserModule,
@@ -37,9 +41,10 @@ import {NgxPrintModule} from "ngx-print";
     ButtonModule,
     RippleModule,
     TableModule,
-    NgxPrintModule
+    NgxPrintModule,
+    CardModule
   ],
-  providers: [SharedService],
+  providers: [SharedService, DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

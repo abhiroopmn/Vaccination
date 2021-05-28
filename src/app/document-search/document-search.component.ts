@@ -77,7 +77,11 @@ export class DocumentSearchComponent implements OnInit {
         popWin.document.write(data);
         popWin.document.write('</body></html>');
 
-        popWin.print();
+        setTimeout(() => {
+          if (popWin) {
+            popWin.print();
+          }
+        }, 2000);
       }
     }
     //  mywindow.close();

@@ -1,0 +1,19 @@
+.employee-details > div:nth-child(odd) {
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.employee-details > div:nth-child(even) {
+  margin-right: 3em;
+}
+
+.employee-details {
+  display: flex;
+  margin: 40px;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+  color: #FFFFFF;
+  background: #027ABC;
+}
+

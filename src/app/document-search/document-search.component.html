@@ -20,9 +20,12 @@
 <!--  </ng-template>-->
 <!--</p-table>-->
 
-
-<vaccine-print id="print-section"></vaccine-print>
-
-<div class="action-bar">
-  <button pButton pRipple type="button" label="Print" class="p-button-raised p-button-info" ngxPrint printSectionId="print-section" styleSheetFile="assets/style.css" [useExistingCss]="true" *ngIf="details?.length !== 0"></button>
+<div class="grid-container">
+  <p-card *ngIf="details?.length !== 0">
+    <vaccine-print id="print-section"></vaccine-print>
+    <div class="action-bar">
+      <button pButton pRipple type="button" label="Print" class="p-button-raised p-button-info" ngxPrint printSectionId="print-section" styleSheetFile="assets/style.css" [useExistingCss]="true"></button>
+    </div>
+  </p-card>
 </div>
+

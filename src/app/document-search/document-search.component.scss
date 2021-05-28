@@ -17,6 +17,11 @@
   margin-top: 25px;
 }
 
+:host ::ng-deep .grid-container {
+  width: 90vw;
+  margin-left: 5vw;
+}
+
 //@media print {
 //  :host .container, :host .action-bar {
 //    display: none;

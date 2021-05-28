@@ -22,4 +22,9 @@ th {
   body {
     margin: 1.6cm;
   }
+
+  .p-datatable .p-datatable-thead > tr > th {
+    color: #FFFFFF;
+    background: #027ABC;
+  }
 }
