@@ -6,7 +6,7 @@ import {PrintComponent} from "./print/print.component";
 
 export const routes: Routes = [
   {path: '', component: UploadComponent},
-  {path: 'upload', component: UploadComponent},
+  {path: 'load', component: UploadComponent},
   {path: 'document-search', component: DocumentSearchComponent},
   {path: 'print', component: PrintComponent}
 ];

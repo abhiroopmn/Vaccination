@@ -10,7 +10,7 @@ import {NavigationEnd, Router} from "@angular/router";
 export class AppComponent {
   title = 'Vaccination';
   items = [
-    {label: 'Upload', icon: 'pi pi-upload', routerLink: '/upload'},
+    {label: 'Load', icon: 'pi pi-upload', routerLink: '/load'},
     {label: 'Document Search', icon: 'pi pi-search', routerLink: '/document-search'},
   ];
   activeItem = this.items[0];

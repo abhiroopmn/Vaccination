@@ -14,11 +14,12 @@ export class FormatPipe implements PipeTransform {
     switch (header) {
       case 'Slot Start':
       case 'Slot End':
-        result = this.convertToTime(value);
+        // result = this.convertToTime(value);
         break;
       case 'DOB':
       case 'Darwin DOB':
       case 'Vac Date':
+      case 'Dose 1 Date':
         result = this.datePipe.transform(result);
         break;
       case 'Co-WIN Ref ID':

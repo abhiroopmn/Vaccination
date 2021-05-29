@@ -1,7 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {SharedService} from "../shared/shared.service";
 import * as XLSX from 'xlsx';
-import {WorkBook} from "xlsx";
+import {WorkBook, WorkSheet} from "xlsx";
 
 @Component({
   selector: 'document-search',
@@ -15,8 +15,10 @@ export class DocumentSearchComponent implements OnInit {
   jsonFile: any[] = [];
   details: any[] = [];
   headers: string[] = [];
+  totalCount = 0;
 
   constructor(private sharedService: SharedService) {
+    this.sharedService.vaccinatedEmployees.subscribe(emps => this.totalCount = emps.length);
   }
 
   ngOnInit(): void {
@@ -32,12 +34,18 @@ export class DocumentSearchComponent implements OnInit {
         const bstr = arr.join("");
         this.workbook = XLSX.read(bstr, {type:"binary"});
         const first_sheet_name = this.workbook.SheetNames[0];
-        const worksheet = this.workbook.Sheets[first_sheet_name];
+        const worksheet: WorkSheet = this.workbook.Sheets[first_sheet_name];
         // console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-        this.jsonFile = XLSX.utils.sheet_to_json(worksheet,{raw:true});
+        console.log(worksheet);
+        this.jsonFile = XLSX.utils.sheet_to_json(worksheet,{raw:false});
+        console.log(this.jsonFile);
+        if (this.sharedService.file) {
+          XLSX.writeFile(this.workbook, this.sharedService.file.name);
+        }
         this.headers = Object.keys(this.jsonFile[0]);
         this.sharedService.setHeaders(this.headers);
         console.log(this.jsonFile);
+        this.restoreVaccinatedEmployeesList();
 
       }
       // const workbook: WorkBook = XLSX.read(this.arrayBuffer);
@@ -45,8 +53,19 @@ export class DocumentSearchComponent implements OnInit {
     }
   }
 
+  restoreVaccinatedEmployeesList() {
+    const storedValue = localStorage.getItem('qvTokenList');
+    if (storedValue) {
+      const selectedTokens = JSON.parse(storedValue);
+      this.sharedService.setVaccinatedEmployees(this.jsonFile.filter(x => selectedTokens.includes(x['Token'])));
+    }
+  }
+
   search() {
-    this.details = this.jsonFile.filter(x => x['Empl ID'] == this.emplid);
+    this.details = this.jsonFile.filter(x => x['Token'] == this.emplid);
+    if (this.details.length === 0) {
+      this.details = this.jsonFile.filter(x => x['Empl ID'] == this.emplid);
+    }
     this.sharedService.setDetails(this.details);
   }
 

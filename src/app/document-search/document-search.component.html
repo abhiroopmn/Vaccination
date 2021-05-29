@@ -1,25 +1,13 @@
 <div class="container">
   <form>
-    <div>Employee ID</div>
+    <div>Employee ID or Token</div>
     <div class="search-container">
       <input type="text" name="emplid" pInputText [(ngModel)]="emplid">
       <button pButton pRipple type="submit" label="Search" class="p-button-raised p-button-success" (click)="search()"></button>
     </div>
   </form>
 </div>
-<!--<p-table [value]="details" id="print-section">-->
-<!--  <ng-template pTemplate="header">-->
-<!--    <tr>-->
-<!--      <th *ngFor="let header of headers">{{header}}</th>-->
-<!--    </tr>-->
-<!--  </ng-template>-->
-<!--  <ng-template pTemplate="body" let-detail>-->
-<!--    <tr>-->
-<!--      <td *ngFor="let header of headers">{{detail[header]}}</td>-->
-<!--    </tr>-->
-<!--  </ng-template>-->
-<!--</p-table>-->
-
+<div class="count-container"><strong>Attendee count: </strong>{{totalCount}}</div>
 <div class="grid-container">
   <p-card *ngIf="details?.length !== 0">
     <vaccine-print id="print-section"></vaccine-print>

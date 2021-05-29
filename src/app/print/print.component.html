@@ -4,9 +4,12 @@
   <div>Employee Name: </div><div>{{details[0] ? details[0]['Employee Name'] : ''}}</div>
 </div>
 
-<p-table [value]="details" *ngIf="details?.length !== 0">
+<p-table [value]="details" *ngIf="details?.length !== 0" [(selection)]="vaccinatedEmployees" (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
   <ng-template pTemplate="header">
     <tr>
+      <th style="width: 2.25em">
+<!--        <p-tableHeaderCheckbox></p-tableHeaderCheckbox>-->
+      </th>
       <ng-container *ngFor="let header of headers">
         <th *ngIf="!headersToBeExcluded.includes(header)">{{header}}</th>
       </ng-container>
@@ -14,6 +17,9 @@
   </ng-template>
   <ng-template pTemplate="body" let-detail>
     <tr>
+      <td>
+        <p-tableCheckbox [value]="detail"></p-tableCheckbox>
+      </td>
       <ng-container *ngFor="let header of headers">
         <td *ngIf="!headersToBeExcluded.includes(header)">{{detail[header] | format: header}}</td>
       </ng-container>
