@@ -17,3 +17,41 @@
   background: #027ABC;
 }
 
+@media print {
+  .display-section {
+    display: none;
+  }
+}
+
+@media screen {
+  .print-container {
+    display: none;
+  }
+}
+
+@media print {
+  .print-container {
+    display: block;
+  }
+}
+
+.print-container {
+  width: 210mm;
+}
+
+.person {
+  width: 210mm;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.person-details {
+  width: 50mm;
+  margin-bottom: 5px;
+  overflow: visible;
+}

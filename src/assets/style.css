@@ -16,15 +16,37 @@ th {
 
 @media print {
   @page {
-    size: A4 landscape;
+    size: A4 portrait;
     margin: 0;
   }
   body {
     margin: 1.6cm;
   }
 
-  .p-datatable .p-datatable-thead > tr > th {
-    color: #FFFFFF;
-    background: #027ABC;
+  .print-container {
+    width: 210mm;
+  }
+
+  .person {
+    width: 210mm;
+    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 10px;
+    position: relative;
+  }
+
+  .person:nth-child(5n) {
+    page-break-before: always;
+  }
+
+  .person-details {
+    width: 50mm;
+    margin-bottom: 5px;
+    overflow: visible;
+    position: relative;
   }
 }

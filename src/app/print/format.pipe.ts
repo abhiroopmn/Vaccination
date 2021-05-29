@@ -20,7 +20,7 @@ export class FormatPipe implements PipeTransform {
       case 'Darwin DOB':
       case 'Vac Date':
       case 'Dose 1 Date':
-        result = this.datePipe.transform(result);
+        result = this.datePipe.transform(result, 'mediumDate');
         break;
       case 'Co-WIN Ref ID':
       case 'Last 4 of Photo ID':

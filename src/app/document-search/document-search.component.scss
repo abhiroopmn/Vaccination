@@ -1,6 +1,14 @@
 .container {
   margin: 30px 40px;
 
+  .search-section {
+    display: flex;
+
+    & > div {
+      margin-right: 5em;
+    }
+  }
+
   .search-container {
     display: flex;
     margin-top: 5px;
@@ -8,18 +16,6 @@
     & > * {
       margin-right: 10px;
     }
-  }
-}
-
-.count-container {
-  float: right;
-  margin-right: 80px;
-  margin-top: -65px;
-  display: flex;
-  align-items: center;
-
-  & > div {
-    margin-right: 1em;
   }
 }
 

@@ -1,15 +1,23 @@
 <div class="container">
   <form>
-    <div>Employee ID or Token</div>
-    <div class="search-container">
-      <input type="text" name="emplid" pInputText [(ngModel)]="emplid">
-      <button pButton pRipple type="submit" label="Search" class="p-button-raised p-button-success" (click)="search()"></button>
+    <div class="search-section">
+      <div>
+        <div>Employee ID or Token</div>
+        <div class="search-container">
+          <input type="text" name="emplid" pInputText [(ngModel)]="emplid">
+          <button pButton pRipple type="submit" label="Search" class="p-button-raised p-button-success" (click)="search()"></button>
+        </div>
+      </div>
+      <div>
+        <div>Attendee Count</div>
+        <div class="search-container">
+          <input type="text" name="count" pInputText [ngModel]="totalCount" disabled>
+          <button pButton pRipple type="button" icon="pi pi-download" label="Download" class="p-button-raised p-button-warning" (click)="saveStatus()"></button>
+        </div>
+      </div>
     </div>
+
   </form>
-</div>
-<div class="count-container">
-  <div><strong>Attendee count: </strong>{{totalCount}}</div>
-  <button pButton pRipple type="button" icon="pi pi-download" label="Download" class="p-button-raised p-button-warning" (click)="saveStatus()"></button>
 </div>
 <div class="grid-container">
   <p-card *ngIf="details?.length !== 0">
