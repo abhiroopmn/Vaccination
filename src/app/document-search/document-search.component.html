@@ -7,7 +7,10 @@
     </div>
   </form>
 </div>
-<div class="count-container"><strong>Attendee count: </strong>{{totalCount}}</div>
+<div class="count-container">
+  <div><strong>Attendee count: </strong>{{totalCount}}</div>
+  <button pButton pRipple type="button" icon="pi pi-download" label="Download" class="p-button-raised p-button-warning" (click)="saveStatus()"></button>
+</div>
 <div class="grid-container">
   <p-card *ngIf="details?.length !== 0">
     <vaccine-print id="print-section"></vaccine-print>

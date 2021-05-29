@@ -20,6 +20,9 @@ import {NgxPrintModule} from "ngx-print";
 import {DatePipe, DecimalPipe} from "@angular/common";
 import {FormatPipe} from "./print/format.pipe";
 import {CardModule} from "primeng/card";
+import {ToastModule} from "primeng/toast";
+import {MessageService} from "primeng/api";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -42,9 +45,11 @@ import {CardModule} from "primeng/card";
     RippleModule,
     TableModule,
     NgxPrintModule,
-    CardModule
+    CardModule,
+    ToastModule,
+    BrowserAnimationsModule
   ],
-  providers: [SharedService, DatePipe, DecimalPipe],
+  providers: [SharedService, DatePipe, DecimalPipe, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

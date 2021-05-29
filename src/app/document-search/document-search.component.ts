@@ -2,6 +2,7 @@ import {Component, OnInit} from "@angular/core";
 import {SharedService} from "../shared/shared.service";
 import * as XLSX from 'xlsx';
 import {WorkBook, WorkSheet} from "xlsx";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'document-search',
@@ -16,8 +17,9 @@ export class DocumentSearchComponent implements OnInit {
   details: any[] = [];
   headers: string[] = [];
   totalCount = 0;
+  worksheet: WorkSheet | undefined;
 
-  constructor(private sharedService: SharedService) {
+  constructor(private sharedService: SharedService, private messageService: MessageService) {
     this.sharedService.vaccinatedEmployees.subscribe(emps => this.totalCount = emps.length);
   }
 
@@ -34,22 +36,15 @@ export class DocumentSearchComponent implements OnInit {
         const bstr = arr.join("");
         this.workbook = XLSX.read(bstr, {type:"binary"});
         const first_sheet_name = this.workbook.SheetNames[0];
-        const worksheet: WorkSheet = this.workbook.Sheets[first_sheet_name];
-        // console.log(XLSX.utils.sheet_to_json(worksheet,{raw:true}));
-        console.log(worksheet);
-        this.jsonFile = XLSX.utils.sheet_to_json(worksheet,{raw:false});
-        console.log(this.jsonFile);
-        if (this.sharedService.file) {
-          XLSX.writeFile(this.workbook, this.sharedService.file.name);
-        }
+        this.worksheet = this.workbook.Sheets[first_sheet_name];
+        this.jsonFile = XLSX.utils.sheet_to_json(this.worksheet,{raw:false});
         this.headers = Object.keys(this.jsonFile[0]);
         this.sharedService.setHeaders(this.headers);
-        console.log(this.jsonFile);
         this.restoreVaccinatedEmployeesList();
-
+        if (this.worksheet) {
+          this.messageService.add({detail: 'Successfully loaded data from file', severity: 'success'});
+        }
       }
-      // const workbook: WorkBook = XLSX.read(this.arrayBuffer);
-      // const workbook: WorkBook = XLSX.readFile(this.sharedService.file.name);
     }
   }
 
@@ -65,6 +60,10 @@ export class DocumentSearchComponent implements OnInit {
     this.details = this.jsonFile.filter(x => x['Token'] == this.emplid);
     if (this.details.length === 0) {
       this.details = this.jsonFile.filter(x => x['Empl ID'] == this.emplid);
+    }
+
+    if (this.details.length === 0) {
+      this.messageService.add({detail: 'No match found', severity: 'warn'});
     }
     this.sharedService.setDetails(this.details);
   }
@@ -106,5 +105,38 @@ export class DocumentSearchComponent implements OnInit {
     //  mywindow.close();
 
     return true;
+  }
+
+  saveStatus() {
+    const storedValue = localStorage.getItem('qvTokenList');
+    if (storedValue && this.worksheet) {
+      const selectedTokens = JSON.parse(storedValue);
+      // this.jsonFile.forEach(row => {
+      //   if (selectedTokens.includes(row['Token'])) {
+      //     row['Vaccinated'] = 1;
+      //   }
+      // })
+      if (this.worksheet['!ref']) {
+        const range = XLSX.utils.decode_range(this.worksheet['!ref']);
+        for (let rowNum = range.s.r; rowNum <= range.e.r; rowNum++) {
+          // Example: Get third cell in each row, i.e. Column "C"
+          const thirdCell = this.worksheet[XLSX.utils.encode_cell({r: rowNum, c: 2})];
+          // NOTE: secondCell is undefined if it does not exist (i.e. if its empty)
+          if (thirdCell) {
+            let value = selectedTokens.includes(String(thirdCell.v)) ? 1 : 0;
+            if (this.worksheet['R'+(rowNum+1)]) {
+              this.worksheet['R'+(rowNum+1)].v = value;
+            } else {
+              XLSX.utils.sheet_add_aoa(this.worksheet, [[value]], {origin: 'R'+(rowNum+1)})
+            }
+          }
+
+        }
+        if (this.workbook && this.sharedService.file) {
+          XLSX.writeFile(this.workbook, this.sharedService.file.name);
+          this.messageService.add({detail: 'File has been updated', severity: 'success'})
+        }
+      }
+    }
   }
 }
