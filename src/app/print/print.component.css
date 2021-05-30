@@ -17,6 +17,10 @@
   background: #027ABC;
 }
 
+:host ::ng-deep .center-align {
+  text-align: center;
+}
+
 @media print {
   .display-section {
     display: none;

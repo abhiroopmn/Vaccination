@@ -16,6 +16,9 @@ body {
   font-family: 'Roboto', sans-serif !important;
 }
 
+.p-datatable .p-datatable-tbody > tr > td.center-align {
+  text-align: center;
+}
 
 /*vaccine-upload th {*/
 /*  background-color: red;*/
