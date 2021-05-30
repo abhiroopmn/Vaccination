@@ -22,7 +22,7 @@ export class FormatPipe implements PipeTransform {
       case 'Dose 1 Date':
         result = this.datePipe.transform(result, 'mediumDate');
         break;
-      case 'Co-WIN Ref ID':
+      case 'Last 4 Digits of Co-WIN Ref ID':
       case 'Last 4 of Photo ID':
         result = this.sharedService.paddingLeft(result, 4, '0');
         break;
