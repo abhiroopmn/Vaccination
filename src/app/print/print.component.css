@@ -22,6 +22,11 @@
 }
 
 @media print {
+  .employee-details {
+    margin: 1.6cm 1.6cm 1.6cm 1.6cm;
+    padding: 0 20px;
+  }
+
   .display-section {
     display: none;
   }
@@ -40,11 +45,11 @@
 }
 
 .print-container {
-  width: 210mm;
+  width: 175mm;
 }
 
 .person {
-  width: 210mm;
+  width: 175mm;
   border: 1px solid black;
   display: flex;
   justify-content: space-between;

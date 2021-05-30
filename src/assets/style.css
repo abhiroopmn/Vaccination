@@ -20,27 +20,34 @@ th {
     margin: 0;
   }
   body {
-    margin: 1.6cm;
+    /*margin: 1.6cm;*/
+  }
+
+  .employee-details {
+    margin: 1.6cm 1.6cm 1.6cm 3cm;
+    padding: 0 20px;
   }
 
   .print-container {
-    width: 210mm;
+    width: 150mm;
+    margin: 1.6cm;
   }
 
   .person {
-    width: 210mm;
+    width: 150mm;
     border: 1px solid black;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 10px 20px;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px 0;
     position: relative;
   }
 
-  .person:nth-child(5n) {
+  .person:nth-child(4n) {
     page-break-before: always;
+    margin-top: 3cm;
   }
 
   .person-details {
