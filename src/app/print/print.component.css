@@ -33,6 +33,7 @@
 
 .p-datatable .p-datatable-tbody > tr.selected {
   background-color: #B7D2BB;
+  color: black;
 }
 
 .p-checkbox .p-checkbox-box.p-highlight {
