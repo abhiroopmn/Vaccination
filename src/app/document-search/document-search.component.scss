@@ -25,6 +25,12 @@
   margin-top: 25px;
 }
 
+.action-bar-first {
+  justify-content: center;
+  float: right;
+  margin-top: 40px;
+}
+
 :host ::ng-deep .grid-container {
   width: 95vw;
   margin-left: 2vw;

@@ -10,10 +10,11 @@
       <tr>
         <th style="width: 5rem">Expand Darwin Data</th>
         <th style="width: 6rem">Reported</th>
+        <th style="width: 6rem">Token</th>
         <th style="width: 10rem">Slot Start</th>
         <th style="width: 10rem">Slot End</th>
-        <th style="width: 6rem">Token</th>
-        <th>Name in Co-WIN</th>
+        <th>Darwin Name</th>
+        <th style="width: 14rem">Name in Co-WIN</th>
         <th style="width: 10rem">Last 4 Digits of Co-WIN Ref ID</th>
         <th>Co-WIN Regd. Mobile #</th>
         <th>Photo ID</th>
@@ -33,9 +34,10 @@
         <td class="center-align">
           <p-tableCheckbox [value]="detail"></p-tableCheckbox>
         </td>
+        <td>{{detail['Token'] | format: 'Token'}}</td>
         <td>{{detail['Slot Start'] | format: 'Slot Start'}}</td>
         <td>{{detail['Slot End'] | format: 'Slot End'}}</td>
-        <td>{{detail['Token'] | format: 'Token'}}</td>
+        <td>{{detail['Darwin Name']}}</td>
         <td>{{detail['Name in Co-WIN']}}</td>
         <td>{{detail['Last 4 Digits of Co-WIN Ref ID'] | format: 'Last 4 Digits of Co-WIN Ref ID'}}</td>
         <td>{{detail['Co-WIN Regd. Mobile #']}}</td>
@@ -51,10 +53,6 @@
           <div>
             <div>Darwin Dependent Type: </div>
             <div>{{detail['Darwin Dependent Type']}}</div>
-          </div>
-          <div>
-            <div>Darwin Name: </div>
-            <div>{{detail['Darwin Name']}}</div>
           </div>
           <div>
             <div>Darwin DOB:</div>
