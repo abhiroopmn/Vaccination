@@ -66,7 +66,6 @@ export class DocumentSearchComponent implements OnInit {
       this.messageService.add({detail: 'No match found', severity: 'warn'});
     }
     this.sharedService.setDetails(this.details);
-    console.log(this.details);
   }
 
   print() {

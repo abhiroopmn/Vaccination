@@ -23,6 +23,7 @@ import {CardModule} from "primeng/card";
 import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {IncludesPipe} from "./shared/includes.pipe";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     UploadComponent,
     DocumentSearchComponent,
     PrintComponent,
-    FormatPipe
+    FormatPipe,
+    IncludesPipe
   ],
   imports: [
     BrowserModule,

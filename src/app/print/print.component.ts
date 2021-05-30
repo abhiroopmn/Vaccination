@@ -21,19 +21,10 @@ export class PrintComponent {
   }
 
   onRowSelect(event: any) {
-    console.log(event);
-    console.log(this.vaccinatedEmployees);
     this.sharedService.setVaccinatedEmployees(this.vaccinatedEmployees);
   }
 
-  // onHeaderCheckboxToggle(event: any) {
-  //   console.log(event);
-  //   console.log(this.vaccinatedEmployees);
-  // }
-
   onRowUnselect(event: any) {
-    console.log(event);
-    console.log(this.vaccinatedEmployees);
     this.sharedService.setVaccinatedEmployees(this.vaccinatedEmployees);
   }
 }

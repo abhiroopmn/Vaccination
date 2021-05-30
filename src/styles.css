@@ -18,6 +18,7 @@ body {
 
 .p-datatable .p-datatable-tbody > tr > td.center-align {
   text-align: center;
+  padding: 0.5rem 0 1.4rem 0;
 }
 
 /*vaccine-upload th {*/

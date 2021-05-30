@@ -9,7 +9,17 @@
 
 .employee-details {
   display: flex;
-  margin: 40px;
+  margin: 40px 0;
+}
+
+@media screen {
+  .employee-details {
+    font-size: 24px;
+  }
+}
+
+.display-section .person-details {
+  font-size: 16px;
 }
 
 .p-datatable .p-datatable-thead > tr > th {
@@ -17,8 +27,34 @@
   background: #027ABC;
 }
 
+.p-datatable .p-datatable-tbody > tr > td {
+  font-size: 26px;
+}
+
+.p-datatable .p-datatable-tbody > tr.selected {
+  background-color: #B7D2BB;
+}
+
+.p-checkbox .p-checkbox-box.p-highlight {
+  border-color: #5E8F32;
+  background: #5E8F32;
+}
+
 :host ::ng-deep .center-align {
   text-align: center;
+}
+
+.expanded-details > div {
+  display: flex;
+}
+
+.expanded-details > div > div:first-child {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+
+.expanded-details > div > div:last-child {
+  font-weight: normal;
 }
 
 @media print {

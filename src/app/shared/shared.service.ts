@@ -8,7 +8,6 @@ export class SharedService {
   headers = new BehaviorSubject<string[]>([]);
   details = new BehaviorSubject<string[]>([]);
   vaccinatedEmployees = new BehaviorSubject<any[]>([]);
-  private fileUrl = 'https://qualcomm-my.sharepoint.com/:x:/r/personal/mnabhiro_qti_qualcomm_com/Documents/Qvaccine_BglrDrive_May31_Schedule_Print_Sample.xlsx?d=w852ae82f0a884da9905122d054d73d5a&csf=1&web=1&e=NAcbTd';
 
   constructor(private http: HttpClient) {
   }
@@ -30,10 +29,6 @@ export class SharedService {
       value = paddingChar + value;
     }
     return value;
-  }
-
-  loadFile(): Observable<any> {
-    return this.http.get(this.fileUrl);
   }
 
   setVaccinatedEmployees(list: any[]) {

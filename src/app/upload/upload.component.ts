@@ -20,8 +20,4 @@ export class UploadComponent {
     this.sharedService.file = this.file;
     this.router.navigateByUrl('document-search')
   }
-
-  loadFile() {
-    this.sharedService.loadFile().subscribe((res: any) => console.log(res));
-  }
 }
