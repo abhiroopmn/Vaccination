@@ -72,66 +72,22 @@ export class DocumentSearchComponent implements OnInit {
     this.sharedService.setDetails(this.details);
   }
 
-  print() {
-    // const printContent = document.getElementById("print");
-    // if (printContent) {
-    //   const windowPort = window.open('', '', 'left=0,top=0,width=900,height=900,toolbar=0,scrollbars=0,status=0');
-    //   if (windowPort) {
-    //     windowPort.document.write(printContent.innerHTML);
-    //     windowPort.document.close();
-    //     windowPort.focus();
-    //     windowPort.print();
-    //     windowPort.close();
-    //   }
-    // }
-
-    // window.print();
-
-
-    const elem = window.document.getElementById('print');
-    if (elem) {
-      let data = elem.innerHTML;
-      let popWin = window.open('print', '_blank');
-      if (popWin) {
-        popWin.document.write('<html><head><title>my div</title>');
-        popWin.document.write('<link rel="stylesheet" href="styles.css" type="text/css" />');
-        popWin.document.write('</head><body >');
-        popWin.document.write(data);
-        popWin.document.write('</body></html>');
-
-        setTimeout(() => {
-          if (popWin) {
-            popWin.print();
-          }
-        }, 2000);
-      }
-    }
-    //  mywindow.close();
-
-    return true;
-  }
-
   saveStatus() {
     const storedValue = localStorage.getItem('qvTokenList');
     if (storedValue && this.worksheet) {
       const selectedTokens = JSON.parse(storedValue);
-      // this.jsonFile.forEach(row => {
-      //   if (selectedTokens.includes(row['Token'])) {
-      //     row['Vaccinated'] = 1;
-      //   }
-      // })
       if (this.worksheet['!ref']) {
         const range = XLSX.utils.decode_range(this.worksheet['!ref']);
         for (let rowNum = range.s.r; rowNum <= range.e.r; rowNum++) {
           // Example: Get third cell in each row, i.e. Column "C"
-          const thirdCell = this.worksheet[XLSX.utils.encode_cell({r: rowNum, c: 2})];
+          const thirdCell = this.worksheet[XLSX.utils.encode_cell({r: rowNum, c: 0})];
           // NOTE: secondCell is undefined if it does not exist (i.e. if its empty)
           if (thirdCell) {
             let value = selectedTokens.includes(String(thirdCell.v)) ? 1 : 0;
-            if (this.worksheet['R'+(rowNum+1)]) {
-              this.worksheet['R'+(rowNum+1)].v = value;
+            if (this.worksheet['V'+(rowNum+1)]) {
+              this.worksheet['V'+(rowNum+1)].v = value;
             } else {
-              XLSX.utils.sheet_add_aoa(this.worksheet, [[value]], {origin: 'R'+(rowNum+1)})
+              XLSX.utils.sheet_add_aoa(this.worksheet, [[value]], {origin: 'V'+(rowNum+1)})
             }
           }
 

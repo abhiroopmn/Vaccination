@@ -10,7 +10,7 @@ import {SharedService} from "../shared/shared.service";
 export class PrintComponent {
   details: any[] = [];
   headers: string[] = [];
-  headersToBeExcluded = ['Empl ID', 'Email ID', 'Employee Name', 'Vaccinated', 'Dose 1 Date'];
+  headersToBeExcluded = ['Empl ID', 'Email ID', 'Empl e-mail', 'Employee Name', 'Name', 'Vaccinated', 'Dose 1 Date'];
   vaccinatedEmployees: any[] = [];
   object = Object;
 

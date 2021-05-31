@@ -1,7 +1,7 @@
 <div class="employee-details" *ngIf="details?.length !== 0">
   <div>Employee ID: </div><div>{{details[0] ? details[0]['Empl ID'] : ''}}</div>
-  <div>Email: </div><div>{{details[0] ? details[0]['Email ID'] : ''}}</div>
-  <div>Employee Name: </div><div>{{details[0] ? details[0]['Employee Name'] : ''}}</div>
+  <div>Email: </div><div>{{details[0] ? details[0]['Empl e-mail'] : ''}}</div>
+  <div>Employee Name: </div><div>{{details[0] ? details[0]['Name'] : ''}}</div>
 </div>
 
 <div class="display-section">
@@ -37,13 +37,13 @@
         <td>{{detail['Token'] | format: 'Token'}}</td>
         <td>{{detail['Slot Start'] | format: 'Slot Start'}}</td>
         <td>{{detail['Slot End'] | format: 'Slot End'}}</td>
-        <td>{{detail['Darwin Name']}}</td>
+        <td>{{detail['Name']}}</td>
         <td>{{detail['Name in Co-WIN']}}</td>
-        <td>{{detail['Last 4 Digits of Co-WIN Ref ID'] | format: 'Last 4 Digits of Co-WIN Ref ID'}}</td>
+        <td>{{detail['CO-WIN REF ID (last 4 digits)'] | format: 'CO-WIN REF ID (last 4 digits)'}}</td>
         <td>{{detail['Co-WIN Regd. Mobile #']}}</td>
         <td>{{detail['Photo ID']}}</td>
-        <td>{{detail['Last 4 of Photo ID'] | format: 'Last 4 of Photo ID'}}</td>
-        <td>{{detail['Dose']}}</td>
+        <td>{{detail['CO-WIN Photo ID (last 4 digits)'] | format: 'CO-WIN Photo ID (last 4 digits)'}}</td>
+        <td>{{detail['Dose 1/2']}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-detail>
@@ -52,19 +52,19 @@
         <td colspan="9" class="expanded-details">
           <div>
             <div>Darwin Dependent Type: </div>
-            <div>{{detail['Darwin Dependent Type']}}</div>
+            <div>{{detail['Relation']}}</div>
           </div>
           <div>
             <div>Darwin DOB:</div>
-            <div>{{detail['Darwin DOB'] | format: 'Darwin DOB'}}</div>
+            <div>{{detail['DOB'] | format: 'DOB'}}</div>
           </div>
           <div>
             <div>Darwin Gender:</div>
-            <div>{{detail['Darwin Gender'] | format: 'Darwin Gender'}}</div>
+            <div>{{detail['Gender']}}</div>
           </div>
           <div>
             <div>Dose 1 Date:</div>
-            <div>{{detail['Dose 1 Date'] | format: 'Dose 1 Date'}}</div>
+            <div>{{detail['Vac Date'] | format: 'Vac Date'}}</div>
           </div>
         </td>
       </tr>
@@ -75,16 +75,62 @@
 <div class="print-container">
   <ng-container *ngFor="let detail of details">
     <div class="person" *ngIf="vaccinatedEmployees | includes : detail">
-        <ng-container *ngFor="let header of headers">
-          <div class="person-details" *ngIf="!headersToBeExcluded.includes(header)">
-            <div><strong>{{header}}:</strong></div>
-            <div>{{detail[header] | format : header}}</div>
-          </div>
-        </ng-container>
-        <div class="person-details">
-          <div><strong>Dose 1 Date:</strong></div>
-          <div>{{detail['Dose 1 Date'] | format: 'Dose 1 Date'}}</div>
-        </div>
+      <div class="person-details">
+        <div><strong>Token:</strong></div>
+        <div>{{detail['Token']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Slot Start:</strong></div>
+        <div>{{detail['Slot Start']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Slot End:</strong></div>
+        <div>{{detail['Slot End']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Name:</strong></div>
+        <div>{{detail['Name']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Name in Co-WIN:</strong></div>
+        <div>{{detail['Name in Co-WIN']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>CO-WIN REF ID (last 4 digits):</strong></div>
+        <div>{{detail['CO-WIN REF ID (last 4 digits)'] | format : 'CO-WIN REF ID (last 4 digits)'}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Co-WIN Regd. Mobile #:</strong></div>
+        <div>{{detail['Co-WIN Regd. Mobile #']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Photo ID:</strong></div>
+        <div>{{detail['Photo ID']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>CO-WIN Photo ID (last 4 digits):</strong></div>
+        <div>{{detail['CO-WIN Photo ID (last 4 digits)'] | format : 'CO-WIN Photo ID (last 4 digits)'}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Dose 1/2:</strong></div>
+        <div>{{detail['Dose 1/2']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Darwin Dependent Type:</strong></div>
+        <div>{{detail['Relation']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Darwin DOB:</strong></div>
+        <div>{{detail['DOB'] | format: 'DOB'}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Darwin Gender:</strong></div>
+        <div>{{detail['Gender']}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Dose 1 Date:</strong></div>
+        <div>{{detail['Vac Date'] | format: 'Vac Date'}}</div>
+      </div>
     </div>
   </ng-container>
 </div>
