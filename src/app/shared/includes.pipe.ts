@@ -5,7 +5,18 @@ import {Pipe, PipeTransform} from "@angular/core";
 })
 export class IncludesPipe implements PipeTransform {
   transform(selectedData: any[], row: any): boolean {
-    const found = selectedData.find(x => x['Token'] === row['Token']);
-    return !!found;
+    let found = false;
+    if (Array.isArray(row)) {
+      if (row.length > 0) {
+        row.forEach(detail => {
+          if (selectedData.find(x => x['Token'] === detail['Token'])) {
+            found = true;
+          }
+        });
+      }
+    } else {
+      found = selectedData.find(x => x['Token'] === row['Token']);
+    }
+    return found;
   }
 }

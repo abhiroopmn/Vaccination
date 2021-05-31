@@ -19,13 +19,15 @@
 
   </form>
   <div class="action-bar-first" *ngIf="details?.length !== 0">
-    <button pButton pRipple type="button" label="Print Selected" class="p-button-raised p-button-info" ngxPrint printSectionId="print-section" styleSheetFile="assets/style.css" [useExistingCss]="true"></button>
+    <button pButton pRipple type="button" label="Print Selected" class="p-button-raised p-button-info" [disabled]="!(vaccinatedEmployees | includes : details)"
+            ngxPrint printSectionId="print-section" styleSheetFile="assets/style.css" [useExistingCss]="true"></button>
   </div>
 </div>
 <div class="grid-container">
   <vaccine-print id="print-section" *ngIf="details?.length !== 0"></vaccine-print>
   <div class="action-bar" *ngIf="details?.length !== 0">
-    <button pButton pRipple type="button" label="Print Selected" class="p-button-raised p-button-info" ngxPrint printSectionId="print-section" styleSheetFile="assets/style.css" [useExistingCss]="true"></button>
+    <button pButton pRipple type="button" label="Print Selected" class="p-button-raised p-button-info" [disabled]="!(vaccinatedEmployees | includes : details)"
+            ngxPrint printSectionId="print-section" styleSheetFile="assets/style.css" [useExistingCss]="true"></button>
   </div>
 </div>
 

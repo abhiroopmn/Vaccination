@@ -18,9 +18,13 @@ export class DocumentSearchComponent implements OnInit {
   headers: string[] = [];
   totalCount = 0;
   worksheet: WorkSheet | undefined;
+  vaccinatedEmployees: any[] = [];
 
   constructor(private sharedService: SharedService, private messageService: MessageService) {
-    this.sharedService.vaccinatedEmployees.subscribe(emps => this.totalCount = emps.length);
+    this.sharedService.vaccinatedEmployees.subscribe(emps => {
+      this.vaccinatedEmployees = emps;
+      this.totalCount = emps.length
+    });
   }
 
   ngOnInit(): void {
