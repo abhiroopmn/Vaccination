@@ -20,4 +20,8 @@ export class UploadComponent {
     this.sharedService.file = this.file;
     this.router.navigateByUrl('document-search')
   }
+
+  deleteSavedData() {
+    localStorage.clear();
+  }
 }
