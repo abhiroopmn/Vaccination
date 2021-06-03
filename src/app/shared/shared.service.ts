@@ -1,6 +1,5 @@
 import {Injectable} from "@angular/core";
-import {BehaviorSubject, Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable()
 export class SharedService {
@@ -8,9 +7,6 @@ export class SharedService {
   headers = new BehaviorSubject<string[]>([]);
   details = new BehaviorSubject<string[]>([]);
   vaccinatedEmployees = new BehaviorSubject<any[]>([]);
-
-  constructor(private http: HttpClient) {
-  }
 
   setDetails(detail: string[]) {
     this.details.next(detail)
