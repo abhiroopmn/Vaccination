@@ -22,9 +22,9 @@ export class SharedService {
 
   paddingLeft(value: number | string, noOfChars: number, paddingChar: string): string | number {
     if (value) {
-      value = value.toString();
+      value = value.toString().trim();
       if (value.length > noOfChars) {
-        value = value.substring(0, noOfChars-1);
+        value = value.substring(value.length - 4, value.length);
       }
       while (value.length < noOfChars) {
         value = paddingChar + value;
