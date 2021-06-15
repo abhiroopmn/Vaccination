@@ -24,6 +24,7 @@ import {ToastModule} from "primeng/toast";
 import {MessageService} from "primeng/api";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {IncludesPipe} from "./shared/includes.pipe";
+import {DialogModule} from "primeng/dialog";
 
 @NgModule({
   declarations: [
@@ -34,23 +35,24 @@ import {IncludesPipe} from "./shared/includes.pipe";
     FormatPipe,
     IncludesPipe
   ],
-  imports: [
-    BrowserModule,
-    FileUploadModule,
-    HttpClientModule,
-    AppRoutingModule,
-    RouterModule,
-    TabMenuModule,
-    InputTextModule,
-    FormsModule,
-    ButtonModule,
-    RippleModule,
-    TableModule,
-    NgxPrintModule,
-    CardModule,
-    ToastModule,
-    BrowserAnimationsModule
-  ],
+    imports: [
+        BrowserModule,
+        FileUploadModule,
+        HttpClientModule,
+        AppRoutingModule,
+        RouterModule,
+        TabMenuModule,
+        InputTextModule,
+        FormsModule,
+        ButtonModule,
+        RippleModule,
+        TableModule,
+        NgxPrintModule,
+        CardModule,
+        ToastModule,
+        BrowserAnimationsModule,
+        DialogModule
+    ],
   providers: [SharedService, DatePipe, DecimalPipe, MessageService],
   bootstrap: [AppComponent]
 })

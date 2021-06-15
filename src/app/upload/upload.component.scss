@@ -8,10 +8,25 @@
   & > div:last-child {
     margin: 10px 0;
   }
+
+  .format-text {
+    margin-top: 0.5em;
+  }
 }
 
 .bottom-right {
   position: absolute;
   bottom: 0;
   right: 0;
+}
+
+
+.action-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  & > button {
+    margin-left: 20px;
+  }
 }

@@ -39,11 +39,11 @@
         <td>{{detail['Slot End'] | format: 'Slot End'}}</td>
         <td>{{detail['Name']}}</td>
         <td>{{detail['Name in Co-WIN']}}</td>
-        <td>{{detail['CO-WIN REF ID (last 4 digits)'] | format: 'CO-WIN REF ID (last 4 digits)'}}</td>
+        <td>{{(detail['CO-WIN REF ID (last 4 digits)'] || detail['Last 4 Digits of Co-WIN Ref ID']) | format: 'CO-WIN REF ID (last 4 digits)'}}</td>
         <td>{{detail['Co-WIN Regd. Mobile #']}}</td>
-        <td>{{detail['Photo ID']}}</td>
-        <td>{{detail['CO-WIN Photo ID (last 4 digits)'] | format: 'CO-WIN Photo ID (last 4 digits)'}}</td>
-        <td>{{detail['Dose 1/2']}}</td>
+        <td>{{detail['Photo ID'] || detail['Co-WIN Photo Id']}}</td>
+        <td>{{(detail['CO-WIN Photo ID (last 4 digits)'] || detail['Last 4 of Photo ID']) | format: 'CO-WIN Photo ID (last 4 digits)'}}</td>
+        <td>{{detail['Dose 1/2'] || (detail['Dose1 Status'] | format: 'Dose1 Status')}}</td>
       </tr>
     </ng-template>
     <ng-template pTemplate="rowexpansion" let-detail>
@@ -52,19 +52,23 @@
         <td colspan="9" class="expanded-details">
           <div>
             <div>Darwin Dependent Type: </div>
-            <div>{{detail['Relation']}}</div>
+            <div>{{detail['Relation'] || detail['Darwin Dependent Type']}}</div>
           </div>
           <div>
             <div>Darwin DOB:</div>
-            <div>{{detail['DOB'] | format: 'DOB'}}</div>
+            <div>{{(detail['DOB'] || detail['Darwin DOB']) | format: 'DOB'}}</div>
           </div>
           <div>
             <div>Darwin Gender:</div>
-            <div>{{detail['Gender']}}</div>
+            <div>{{detail['Gender'] || detail['Darwin Gender']}}</div>
           </div>
           <div>
             <div>Dose 1 Date:</div>
-            <div>{{detail['Vac Date'] | format: 'Vac Date'}}</div>
+            <div>{{(detail['Vac Date'] || detail['Dose1 Date']) | format: 'Vac Date'}}</div>
+          </div>
+          <div>
+            <div>Vaccine Type:</div>
+            <div>{{detail['Vaccine Type'] || detail['Vac Type']}}</div>
           </div>
         </td>
       </tr>
@@ -97,7 +101,7 @@
       </div>
       <div class="person-details">
         <div><strong>CO-WIN REF ID (last 4 digits):</strong></div>
-        <div>{{detail['CO-WIN REF ID (last 4 digits)'] | format : 'CO-WIN REF ID (last 4 digits)'}}</div>
+        <div>{{(detail['CO-WIN REF ID (last 4 digits)'] || detail['Last 4 Digits of Co-WIN Ref ID']) | format : 'CO-WIN REF ID (last 4 digits)'}}</div>
       </div>
       <div class="person-details">
         <div><strong>Co-WIN Regd. Mobile #:</strong></div>
@@ -105,31 +109,35 @@
       </div>
       <div class="person-details">
         <div><strong>Photo ID:</strong></div>
-        <div>{{detail['Photo ID']}}</div>
+        <div>{{detail['Photo ID'] || detail['Co-WIN Photo Id']}}</div>
       </div>
       <div class="person-details">
         <div><strong>CO-WIN Photo ID (last 4 digits):</strong></div>
-        <div>{{detail['CO-WIN Photo ID (last 4 digits)'] | format : 'CO-WIN Photo ID (last 4 digits)'}}</div>
+        <div>{{(detail['CO-WIN Photo ID (last 4 digits)'] || detail['Last 4 of Photo ID']) | format : 'CO-WIN Photo ID (last 4 digits)'}}</div>
       </div>
       <div class="person-details">
         <div><strong>Dose 1/2:</strong></div>
-        <div>{{detail['Dose 1/2']}}</div>
+        <div>{{detail['Dose 1/2'] || (detail['Dose1 Status'] | format: 'Dose1 Status')}}</div>
       </div>
       <div class="person-details">
         <div><strong>Darwin Dependent Type:</strong></div>
-        <div>{{detail['Relation']}}</div>
+        <div>{{detail['Relation'] || detail['Darwin Dependent Type']}}</div>
       </div>
       <div class="person-details">
         <div><strong>Darwin DOB:</strong></div>
-        <div>{{detail['DOB'] | format: 'DOB'}}</div>
+        <div>{{(detail['DOB'] || detail['Darwin DOB']) | format: 'DOB'}}</div>
       </div>
       <div class="person-details">
         <div><strong>Darwin Gender:</strong></div>
-        <div>{{detail['Gender']}}</div>
+        <div>{{detail['Gender'] || detail['Darwin Gender']}}</div>
       </div>
       <div class="person-details">
         <div><strong>Dose 1 Date:</strong></div>
-        <div>{{detail['Vac Date'] | format: 'Vac Date'}}</div>
+        <div>{{(detail['Vac Date'] || detail['Dose1 Date']) | format: 'Vac Date'}}</div>
+      </div>
+      <div class="person-details">
+        <div><strong>Vaccine Type:</strong></div>
+        <div>{{detail['Vac Type'] || detail['Vaccine Type']}}</div>
       </div>
     </div>
   </ng-container>

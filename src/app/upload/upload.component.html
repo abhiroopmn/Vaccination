@@ -1,9 +1,18 @@
 <div class="upload-container">
   <div>Please load the Excel document in required format</div>
   <p-fileUpload #fileUploader accept=".xls,.xlsx" mode="basic" name="myfile[]" [chooseLabel]="file?.name || 'Browse'" [auto]="true" (onSelect)="uploadFile($event, fileUploader)"></p-fileUpload>
-  <div><strong>Allowed Formats:</strong> xls or xlsx</div>
+  <div class="format-text"><strong>Allowed Formats:</strong> xls or xlsx</div>
 
 <!--  <div>Fetch file from Sharepoint</div>-->
 <!--  <button pButton pRipple type="button" label="Load File" class="p-button-raised p-button-info" (click)="loadFile()"></button>-->
-  <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-raised p-button-danger bottom-right" (click)="deleteSavedData()"></button>
+  <button pButton pRipple type="button" icon="pi pi-trash" class="p-button-raised p-button-danger bottom-right" (click)="showDeleteConfirmDialog = true"></button>
 </div>
+
+<p-dialog [(visible)]="showDeleteConfirmDialog" header="Delete Confirmation" [modal]="true">
+  <p>Are you sure that you want to delete all the vaccinated employees data?</p>
+  <p>Clicking on <strong>'Yes'</strong> will clear all the data which cannot be retrieved later.</p>
+  <div class="action-bar">
+    <button pButton label="Yes" class="p-button p-button-raised p-button-success" (click)="deleteSavedData()"></button>
+    <button pButton label="No" class="p-button p-button-raised p-button-danger" (click)="showDeleteConfirmDialog = false"></button>
+  </div>
+</p-dialog>

@@ -2,6 +2,7 @@ import {Component} from "@angular/core";
 import {FileUpload} from "primeng/fileupload";
 import {Router} from "@angular/router";
 import {SharedService} from "../shared/shared.service";
+import {MessageService} from "primeng/api";
 
 @Component({
   selector: 'vaccine-upload',
@@ -10,8 +11,9 @@ import {SharedService} from "../shared/shared.service";
 })
 export class UploadComponent {
   file: File | undefined;
+  showDeleteConfirmDialog = false;
 
-  constructor(private router: Router, private sharedService: SharedService) {
+  constructor(private router: Router, private sharedService: SharedService, private messageService: MessageService) {
   }
 
 
@@ -23,5 +25,8 @@ export class UploadComponent {
 
   deleteSavedData() {
     localStorage.clear();
+    this.sharedService.setVaccinatedEmployees([]);
+    this.showDeleteConfirmDialog = false;
+    this.messageService.add({detail: 'All the data has been erased', severity: 'success'});
   }
 }

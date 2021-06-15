@@ -26,6 +26,13 @@ export class FormatPipe implements PipeTransform {
       case 'CO-WIN Photo ID (last 4 digits)':
         result = this.sharedService.paddingLeft(result, 4, '0');
         break;
+      case 'Dose1 Status':
+        if (value === 'Need this dose') {
+          result = 1;
+        } else if (value === 'Already got this dose') {
+          result = 2;
+        }
+        break;
       default:
         result = value;
     }
