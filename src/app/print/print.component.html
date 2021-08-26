@@ -1,5 +1,5 @@
 <div class="employee-details" *ngIf="details?.length !== 0">
-  <div>Employee ID: </div><div>{{details[0] ? details[0]['Empl ID'] || details[0]['Employee Id']: ''}}</div>
+  <div>Employee ID: </div><div>{{details[0] ? details[0]['Employee ID'] || details[0]['Employee Id']: ''}}</div>
   <div>Email: </div><div>{{details[0] ? details[0]['Empl e-mail'] || details[0]['Email'] : ''}}</div>
   <div>Employee Name: </div><div>{{details[0] ? details[0]['Employee Name'] || details[0]['Name'] : ''}}</div>
 </div>
@@ -15,7 +15,8 @@
         <th style="width: 10rem">Slot End</th>
         <th>Darwin Name</th>
         <th style="width: 14rem">Name in Co-WIN</th>
-        <th style="width: 10rem">Last 4 Digits of Co-WIN Ref ID</th>
+<!--        <th style="width: 10rem">Last 4 Digits of Co-WIN Ref ID</th>-->
+        <th style="width: 10rem">Dependent Type</th>
         <th>Co-WIN Regd. Mobile #</th>
         <th>Photo ID</th>
         <th style="width: 10rem">Last 4 of Photo ID</th>
@@ -35,12 +36,13 @@
           <p-tableCheckbox [value]="detail"></p-tableCheckbox>
         </td>
         <td>{{detail['Token'] | format: 'Token'}}</td>
-        <td>{{detail['Slot Start'] | format: 'Slot Start'}}</td>
-        <td>{{detail['Slot End'] | format: 'Slot End'}}</td>
+        <td>{{detail['Slot / Start'] | format: 'Slot / Start'}}</td>
+        <td>{{detail['Slot / End'] | format: 'Slot / End'}}</td>
         <td>{{detail['Name']}}</td>
-        <td>{{detail['Name in Co-WIN']}}</td>
-        <td>{{(detail['CO-WIN REF ID (last 4 digits)'] || detail['Last 4 Digits of Co-WIN Ref ID']) | format: 'CO-WIN REF ID (last 4 digits)'}}</td>
-        <td>{{detail['Co-WIN Regd. Mobile #']}}</td>
+        <td>{{detail['Darwin Name']}}</td>
+        <td>{{detail['Darwin Relation']}}</td>
+<!--        <td>{{(detail['CO-WIN REF ID (last 4 digits)'] || detail['Last 4 Digits of Co-WIN Ref ID']) | format: 'CO-WIN REF ID (last 4 digits)'}}</td>-->
+<!--        <td>{{detail['Co-WIN Regd. Mobile #']}}</td>-->
         <td>{{detail['Photo ID'] || detail['Co-WIN Photo Id']}}</td>
         <td>{{(detail['CO-WIN Photo ID (last 4 digits)'] || detail['Last 4 of Photo ID']) | format: 'CO-WIN Photo ID (last 4 digits)'}}</td>
         <td>{{detail['Dose 1/2'] || (detail['Dose1 Status'] | format: 'Dose1 Status')}}</td>
@@ -52,7 +54,7 @@
         <td colspan="9" class="expanded-details">
           <div>
             <div>Darwin Dependent Type: </div>
-            <div>{{detail['Relation'] || detail['Darwin Dependent Type']}}</div>
+            <div>{{detail['Relation'] || detail['Darwin Relation']}}</div>
           </div>
           <div>
             <div>Darwin DOB:</div>

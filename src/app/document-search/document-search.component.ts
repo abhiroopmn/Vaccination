@@ -63,7 +63,7 @@ export class DocumentSearchComponent implements OnInit {
   search() {
     this.details = this.jsonFile.filter(x => x['Token'] == this.emplid);
     if (this.details.length === 0) {
-      this.details = this.jsonFile.filter(x => x['Empl ID'] == this.emplid || x['Employee Id'] == this.emplid);
+      this.details = this.jsonFile.filter(x => x['Employee ID'] == this.emplid || x['Employee Id'] == this.emplid);
     }
 
     if (this.details.length === 0) {
